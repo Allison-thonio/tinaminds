@@ -234,8 +234,16 @@ export default function Home() {
   return (
     <main>
       <header className="site-header">
-        <a className="wordmark" href="#top">
-          {siteConfig.orgShortName}
+        <a className="wordmark" href="#top" style={{ display: 'inline-flex', alignItems: 'center', gap: 10 }}>
+          <img
+            src="/images/logo.png"
+            alt={`${siteConfig.orgShortName} logo`}
+            width={34}
+            height={34}
+            style={{ borderRadius: 8, display: 'inline-block', objectFit: 'contain' }}
+            onError={(e) => { e.currentTarget.style.display = 'none' }}
+          />
+          <span>{siteConfig.orgShortName}</span>
         </a>
         <a className="header-link" href="#register">
           Register
@@ -701,8 +709,16 @@ export default function Home() {
 
       {/* Footer */}
       <footer className="site-footer">
-        <a className="wordmark" href="#top">
-          {siteConfig.orgShortName}
+        <a className="wordmark" href="#top" style={{ display: 'inline-flex', alignItems: 'center', gap: 10 }}>
+          <img
+            src="/images/logo.png"
+            alt={`${siteConfig.orgShortName} logo`}
+            width={34}
+            height={34}
+            style={{ borderRadius: 8, display: 'inline-block', objectFit: 'contain' }}
+            onError={(e) => { e.currentTarget.style.display = 'none' }}
+          />
+          <span>{siteConfig.orgShortName}</span>
         </a>
         <div>
           <a href="/privacy">Privacy notice</a>

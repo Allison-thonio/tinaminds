@@ -254,8 +254,9 @@ export default function RegistrationDetail({ params }: { params: Promise<{ id: s
     <main className="admin-page">
       {/* Top Header */}
       <header className="admin-header">
-        <Link href="/admin" className="admin-brand">
-          Tina Like Minds <span>Registry Admin</span>
+        <Link href="/admin" className="admin-brand" style={{ display: 'inline-flex', alignItems: 'center', gap: 10 }}>
+          <img src="/images/logo.png" alt="Tina Like Minds Logo" width={32} height={32} style={{ borderRadius: 6, objectFit: 'contain' }} onError={(e) => { e.currentTarget.style.display = 'none' }} />
+          <span>Tina Like Minds <span>Registry Admin</span></span>
         </Link>
         <div className="admin-header-actions">
           <Link

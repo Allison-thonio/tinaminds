@@ -41,6 +41,16 @@ export default function AdminLogin() {
         ← Tina Like Minds registry
       </Link>
       <section className="admin-login-card">
+        <div style={{ textAlign: 'center', marginBottom: 16 }}>
+          <img
+            src="/images/logo.png"
+            alt="Tina Like Minds logo"
+            width={64}
+            height={64}
+            style={{ borderRadius: 14, display: 'inline-block', boxShadow: '0 4px 12px rgba(0,0,0,0.1)' }}
+            onError={(e) => { e.currentTarget.style.display = 'none' }}
+          />
+        </div>
         <span className="admin-eyebrow">Secure area</span>
         <h1>Admin sign-in</h1>
         <p className="admin-login-description">Sign in to review member registrations.</p>
