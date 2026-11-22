@@ -61,6 +61,7 @@ export default function Home() {
   })
   const [errors, setErrors] = useState<Record<string, string>>({})
   const [focusField, setFocusField] = useState('')
+  const [redirectCountdown, setRedirectCountdown] = useState<number | null>(null)
 
   // Restore success state from sessionStorage if the user refreshed
   useEffect(() => {
@@ -210,6 +211,21 @@ export default function Home() {
 
       // Smooth scroll to success section
       document.getElementById('register')?.scrollIntoView({ behavior: 'smooth' })
+
+      // Automatically redirect to WhatsApp group
+      if (receivedWhatsappUrl) {
+        setRedirectCountdown(2)
+        const timer = setInterval(() => {
+          setRedirectCountdown((prev) => {
+            if (prev === null || prev <= 1) {
+              clearInterval(timer)
+              window.location.href = receivedWhatsappUrl
+              return 0
+            }
+            return prev - 1
+          })
+        }, 1000)
+      }
     } catch (cause) {
       const networkFailure = cause instanceof TypeError
       setError(
@@ -351,6 +367,25 @@ export default function Home() {
                 </div>
 
                 {/* WhatsApp Action Buttons */}
+                {whatsappUrl && (
+                  <div
+                    style={{
+                      background: '#ecfdf5',
+                      border: '1px solid #a7f3d0',
+                      borderRadius: 8,
+                      padding: '12px 16px',
+                      marginBottom: '16px',
+                      textAlign: 'center',
+                      color: '#065f46',
+                      fontWeight: 600,
+                      fontSize: 14,
+                    }}
+                  >
+                    {redirectCountdown !== null && redirectCountdown > 0
+                      ? `Redirecting you to the WhatsApp group in ${redirectCountdown}s…`
+                      : 'Opening WhatsApp group…'}
+                  </div>
+                )}
                 {whatsappUrl && (
                   <div>
                     <a className="whatsapp-action-button" href={whatsappUrl} target="_blank" rel="noreferrer">
