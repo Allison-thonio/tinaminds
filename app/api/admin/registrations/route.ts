@@ -1,6 +1,7 @@
 import { NextResponse } from 'next/server'
 import { isAuthenticatedAdmin } from '@/lib/auth'
 import { createSupabaseAdmin } from '@/lib/supabase-admin'
+import { buildFallbackSearchFilter } from '@/lib/phone'
 
 export const runtime = 'nodejs'
 export const dynamic = 'force-dynamic'
@@ -98,7 +99,7 @@ export async function GET(request: Request) {
       query = query.eq('state', state)
     }
     if (q) {
-      query = query.or(`full_name.ilike.%${q}%,email.ilike.%${q}%,code.ilike.%${q}%,phone_e164.ilike.%${q}%`)
+      query = query.or(buildFallbackSearchFilter(q))
     }
 
     const { data: directRows, count: directCount, error: directError } = await query

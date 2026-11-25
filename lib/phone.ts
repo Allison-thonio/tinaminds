@@ -20,3 +20,23 @@ export function normalizeNigerianPhone(raw: string): string | null {
 export function formatPhoneForExport(e164: string): string {
   return e164.replace(/^(\+234)(\d{3})(\d{3})(\d{4})$/, '$1 $2 $3 $4')
 }
+
+/**
+ * Extracts normalized trailing digits from a phone search query
+ * (e.g. "0803 123 4567" -> "8031234567", "+234803" -> "803")
+ * so partial or local-format searches match stored +234 E.164 numbers.
+ */
+export function extractPhoneSearchDigits(raw: string): string | null {
+  const trimmed = raw.trim()
+  if (!/^[0-9 +().-]{3,}$/.test(trimmed)) return null
+  const digits = trimmed.replace(/\D/g, '').replace(/^(00?234|234|0)/, '')
+  return digits.length >= 2 ? digits : null
+}
+
+/** Builds a safe PostgREST `.or(...)` filter string for fallback admin search. */
+export function buildFallbackSearchFilter(rawQuery: string): string {
+  const safe = rawQuery.replace(/[,()]/g, ' ').trim()
+  const phoneDigits = extractPhoneSearchDigits(rawQuery)
+  const phonePattern = phoneDigits ?? safe
+  return `full_name.ilike.%${safe}%,email.ilike.%${safe}%,code.ilike.%${safe}%,phone_e164.ilike.%${phonePattern}%`
+}

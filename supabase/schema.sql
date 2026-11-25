@@ -64,6 +64,9 @@ create extension if not exists pg_trgm;
 create index if not exists registrations_name_trgm_idx
   on public.registrations using gin (full_name gin_trgm_ops);
 
+create index if not exists registrations_phone_trgm_idx
+  on public.registrations using gin (phone_e164 gin_trgm_ops);
+
 -- Code lookup (admin search by code)
 create index if not exists registrations_code_idx
   on public.registrations (code);
@@ -182,8 +185,8 @@ language sql stable set search_path = public as $$
         '\\', '\\\\'
       ), '%', '\\%'), '_', '\\_') as q_like,
       case
-        when btrim(coalesce(p_q, '')) ~ '^[0-9 +()-]{3,}$'
-        then regexp_replace(regexp_replace(p_q, '[^0-9]', '', 'g'), '^(234|0)', '')
+        when btrim(coalesce(p_q, '')) ~ '^[0-9 +().-]{3,}$'
+        then nullif(regexp_replace(regexp_replace(p_q, '[^0-9]', '', 'g'), '^(00?234|234|0)', ''), '')
         else null
       end as phone_digits
   )

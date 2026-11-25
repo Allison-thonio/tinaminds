@@ -248,7 +248,7 @@ export default function AdminDashboard() {
                 <Search size={16} style={{ position: 'absolute', left: 12, top: 13, color: '#8e8e93' }} />
                 <input
                   type="search"
-                  placeholder="Search name, phone (+234...), email or code..."
+                  placeholder="Search by phone (080..., +234..., or last digits), name, email or code..."
                   value={searchTerm}
                   onChange={(e) => setSearchTerm(e.target.value)}
                   style={{ paddingLeft: 36 }}
