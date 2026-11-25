@@ -3,7 +3,7 @@ import { NextResponse } from 'next/server'
 import { registrationEnvironment } from '@/lib/env'
 import { siteConfig } from '@/lib/config'
 import { requestIp, hashIp } from '@/lib/ip'
-import { checkRateLimit } from '@/lib/ratelimit'
+import { checkRateLimit, checkGlobalRateLimit } from '@/lib/ratelimit'
 import { verifyTurnstile } from '@/lib/turnstile'
 import { registrationSchema } from '@/lib/schemas'
 import { processImage, ImageError } from '@/lib/images'
@@ -53,7 +53,25 @@ export async function POST(request: Request) {
 
   const ip = requestIp(request)
 
-  // 3. Rate limiting (e.g. 5 registrations per hour per IP)
+  // 2a. Global rate limit — prevent server-wide abuse (200/hour)
+  const globalLimit = checkGlobalRateLimit()
+  if (!globalLimit.allowed) {
+    return NextResponse.json(
+      {
+        ok: false,
+        error: {
+          code: 'rate_limited',
+          message: 'Registration is experiencing high traffic. Please try again shortly.',
+        },
+      },
+      {
+        status: 429,
+        headers: { 'Retry-After': String(globalLimit.retryAfter) },
+      }
+    )
+  }
+
+  // 3. Per-IP rate limiting (5 registrations per hour per IP)
   const rateLimit = checkRateLimit(`register:${ip}`, 5, 60 * 60 * 1000)
   if (!rateLimit.allowed) {
     return NextResponse.json(

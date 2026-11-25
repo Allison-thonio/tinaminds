@@ -2,6 +2,11 @@
 const nextConfig = {
   poweredByHeader: false,
   images: { unoptimized: true },
+  experimental: {
+    serverActions: {
+      bodySizeLimit: '5mb',
+    },
+  },
   async headers() {
     return [{
       source: '/:path*',
