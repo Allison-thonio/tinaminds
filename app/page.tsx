@@ -1,11 +1,13 @@
 'use client'
 
 import { useEffect, useRef, useState } from 'react'
+import { motion, MotionConfig } from 'motion/react'
 import { siteConfig } from '@/lib/config'
 import { nigeriaLgas, nigeriaStates } from '@/lib/nigeria-lgas'
 import { registrationSchema } from '@/lib/schemas'
 import { prepareRegistrationImage } from '@/lib/client-image'
 import { ImageUpload } from '@/components/shared/image-upload'
+import { HeroTypedHeading } from '@/components/hero-typed-heading'
 
 const steps = ['Personal details', 'Location', 'Documents', 'Review & consent']
 const stepFields = [
@@ -248,6 +250,7 @@ export default function Home() {
   const sendToAdminHref = adminWhatsappUrl ? `${adminWhatsappUrl}?text=${adminMessage}` : null
 
   return (
+    <MotionConfig reducedMotion="user">
     <main>
       <header className="site-header">
         <a className="wordmark" href="#top" style={{ display: 'inline-flex', alignItems: 'center', gap: 10 }}>
@@ -270,40 +273,71 @@ export default function Home() {
       <section className="hero" id="top">
         <div className="hero-art" aria-hidden="true" />
         <div className="hero-copy">
-          <span className="eyebrow">A stronger community starts with trust</span>
-          <h1>
-            Verify your
-            <br />
-            membership.
-          </h1>
-          <p>
+          <motion.span
+            className="eyebrow"
+            initial={{ opacity: 0, y: 8 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
+          >
+            A stronger community starts with trust
+          </motion.span>
+          <HeroTypedHeading />
+          <motion.p
+            initial={{ opacity: 0, y: 12 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.55, delay: 0.25, ease: [0.22, 1, 0.36, 1] }}
+          >
             Register once so the {siteConfig.orgShortName} admin can confirm who is who in our WhatsApp community. It takes about two minutes.
-          </p>
-          <a className="gold-button" href="#register">
-            Register now <span aria-hidden="true">↗</span>
-          </a>
-          <small>Your details are stored securely and seen only by the {siteConfig.orgShortName} admin.</small>
+          </motion.p>
+          <motion.div
+            initial={{ opacity: 0, y: 12 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.55, delay: 0.38, ease: [0.22, 1, 0.36, 1] }}
+          >
+            <a className="gold-button" href="#register">
+              Register now <span className="cta-arrow" aria-hidden="true">↗</span>
+            </a>
+          </motion.div>
+          <motion.small
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.6, delay: 0.55 }}
+          >
+            Your details are stored securely and seen only by the {siteConfig.orgShortName} admin.
+          </motion.small>
         </div>
         <span className="hero-index">MEMBER REGISTRY · 01</span>
       </section>
 
       {/* How It Works */}
       <section className="how section-wrap">
-        <div>
+        <motion.div
+          initial={{ opacity: 0, y: 14 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.3 }}
+          transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+        >
           <span className="eyebrow dark-eyebrow">A simple process</span>
           <h2>How it works</h2>
-        </div>
+        </motion.div>
         <div className="steps">
           {[
             ['01', 'Fill in your details.', 'Name, phone, email and where you live.'],
             ['02', 'Upload two photos.', "Your voter's card and a clear photograph of yourself."],
             ['03', 'Get your code.', 'Then head back to the WhatsApp group.'],
-          ].map(([n, title, body]) => (
-            <article className="step" key={n}>
+          ].map(([n, title, body], index) => (
+            <motion.article
+              className="step"
+              key={n}
+              initial={{ opacity: 0, y: 16 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.25 }}
+              transition={{ duration: 0.45, delay: index * 0.08, ease: [0.22, 1, 0.36, 1] }}
+            >
               <span>{n}</span>
               <h3>{title}</h3>
               <p>{body}</p>
-            </article>
+            </motion.article>
           ))}
         </div>
       </section>
@@ -769,5 +803,6 @@ export default function Home() {
         </small>
       </footer>
     </main>
+    </MotionConfig>
   )
 }

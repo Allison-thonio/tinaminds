@@ -1169,9 +1169,9 @@ h2 {
   text-decoration: none;
   display: inline-flex;
   align-items: center;
-  transition: all 0.15s ease;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
 }
-.admin-export-button:hover { background: var(--paper-100); border-color: var(--accent-500); }
+.admin-export-button:hover { background: var(--paper-100); border-color: var(--accent-500); transform: translateY(-1px); }
 .admin-metrics {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
@@ -1189,8 +1189,14 @@ h2 {
   border: 1px solid var(--border);
   border-radius: 8px;
   box-shadow: 0 2px 10px rgba(94, 31, 43, 0.04);
-  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
 }
+.admin-metric:hover {
+  border-color: var(--accent-500);
+  box-shadow: 0 4px 18px rgba(94, 31, 43, 0.08);
+  transform: translateY(-2px);
+}
+
 .admin-metric:hover {
   border-color: var(--accent-500);
   box-shadow: 0 4px 16px rgba(94, 31, 43, 0.08);
@@ -1249,8 +1255,16 @@ h2 {
   color: var(--ink-900);
   padding: 8px 12px;
   font-size: 14px;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
 }
 .admin-toolbar input:focus, .admin-toolbar select:focus {
+  border-color: var(--brand-700);
+  box-shadow: 0 0 0 3px rgba(169, 128, 59, 0.18);
+  outline: none;
+}
+
+.admin-toolbar input:focus,
+.admin-toolbar select:focus {
   border-color: var(--brand-700);
   outline: none;
 }
@@ -1311,8 +1325,14 @@ h2 {
   color: var(--ink-900);
   cursor: pointer;
   font-weight: 600;
+  transition: all 0.15s ease;
 }
 .admin-pagination button:hover:not(:disabled) { border-color: var(--accent-500); background: var(--paper-50); }
+
+.admin-pagination button:hover:not(:disabled) {
+  border-color: var(--accent-500);
+  background: var(--paper-50);
+}
 
 .admin-pagination button:disabled {
   opacity: 0.5;
@@ -1335,8 +1355,21 @@ h2 {
   font-weight: 600;
   text-decoration: none;
   align-self: flex-start;
+  transition: color 0.15s ease;
 }
-.admin-back-link:hover { text-decoration: underline; }
+.admin-back-link:hover { color: var(--accent-600); text-decoration: underline; }
+
+.admin-back-link {
+  color: var(--brand-900);
+  font-size: 14px;
+  font-weight: 600;
+  text-decoration: none;
+  align-self: flex-start;
+}
+
+.admin-back-link:hover {
+  text-decoration: underline;
+}
 
 .admin-login-card {
   width: min(100%, 440px);
@@ -1361,6 +1394,20 @@ h2 {
   color: var(--ink-900);
 }
 
+.admin-login-description {
+  margin: 0 0 22px;
+  color: var(--ink-600);
+  font-size: 15px;
+}
+
+.admin-password {
+  display: block;
+  margin-bottom: 6px;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--ink-900);
+}
+
 .admin-password-control {
   display: flex;
   min-height: 48px;
@@ -1368,6 +1415,12 @@ h2 {
   border-radius: 6px;
   overflow: hidden;
   background: #FFFFFF;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+  background: #FFFFFF;
+}
+.admin-password-control:focus-within {
+  border-color: var(--brand-700);
+  box-shadow: 0 0 0 3px rgba(169, 128, 59, 0.18);
 }
 
 .admin-password-control input {
@@ -1400,9 +1453,69 @@ h2 {
   color: #F6F1E9;
   font-weight: 700;
   cursor: pointer;
-  transition: background 0.15s ease;
+  transition: background 0.15s ease, transform 0.15s ease;
 }
-.admin-login-submit:hover { background: var(--brand-700); }
+.admin-login-submit:hover { background: var(--brand-700); transform: translateY(-1px); }
+
+/* Mature UX Movements & Hero Typed Effect */
+.typed-line {
+  display: inline-block;
+  position: relative;
+  white-space: pre-wrap;
+}
+
+.typed-ghost {
+  visibility: hidden;
+  user-select: none;
+  pointer-events: none;
+}
+
+.typed-caret {
+  display: inline-block;
+  width: 3px;
+  height: 0.88em;
+  margin-left: 3px;
+  vertical-align: -0.05em;
+  background: var(--accent-500);
+  box-shadow: 0 0 8px rgba(169, 128, 59, 0.55);
+  animation: caretBlink 1.05s infinite steps(1, start);
+}
+
+.typed-caret.is-done {
+  animation-iteration-count: 2;
+}
+
+.typed-caret.is-hidden {
+  display: none;
+}
+
+@keyframes caretBlink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+.cta-arrow {
+  display: inline-block;
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.gold-button:hover .cta-arrow,
+.submit-button:hover .cta-arrow {
+  transform: translate(3px, -3px);
+}
+
+.step {
+  transition: border-color 0.25s ease, transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.step:hover {
+  border-color: var(--accent-500);
+  transform: translateY(-2px);
+}
+
+.admin-login-submit:hover {
+  background: var(--brand-700);
+}
 
 .admin-login-submit:hover {
   background: var(--brand-500);
