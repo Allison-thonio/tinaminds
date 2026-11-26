@@ -275,7 +275,7 @@ export default function RegistrationDetail({ params }: { params: Promise<{ id: s
           <Link
             className="admin-text-link admin-back-link"
             href="/admin"
-            style={{ display: 'inline-flex', alignItems: 'center', gap: 6, color: '#16303B', fontWeight: 600, fontSize: 14 }}
+            style={{ display: 'inline-flex', alignItems: 'center', gap: 6, color: '#5E1F2B', fontWeight: 600, fontSize: 14 }}
           >
             <ArrowLeft size={16} /> Back to all registrations
           </Link>
@@ -477,7 +477,7 @@ export default function RegistrationDetail({ params }: { params: Promise<{ id: s
                 <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', paddingBottom: 12, borderBottom: '1px solid #f1f5f9' }}>
                   <span style={{ color: '#64748b', fontSize: 13, fontWeight: 500 }}>WhatsApp Phone</span>
                   <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
-                    <a href={`tel:${record.phone}`} style={{ color: '#0b6e4f', fontWeight: 600, textDecoration: 'none', fontSize: 14 }}>
+                    <a href={`tel:${record.phone}`} style={{ color: '#5E1F2B', fontWeight: 600, textDecoration: 'none', fontSize: 14 }}>
                       {record.phone}
                     </a>
                     <button
@@ -496,7 +496,7 @@ export default function RegistrationDetail({ params }: { params: Promise<{ id: s
                 <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', paddingBottom: 12, borderBottom: '1px solid #f1f5f9' }}>
                   <span style={{ color: '#64748b', fontSize: 13, fontWeight: 500 }}>Email Address</span>
                   <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
-                    <a href={`mailto:${record.email}`} style={{ color: '#16303B', textDecoration: 'none', fontSize: 14 }}>
+                    <a href={`mailto:${record.email}`} style={{ color: '#5E1F2B', textDecoration: 'none', fontSize: 14 }}>
                       {record.email}
                     </a>
                     <button

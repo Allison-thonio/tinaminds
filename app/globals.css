@@ -2,18 +2,18 @@
 @import 'tw-animate-css';
 @import 'shadcn/tailwind.css';
 
-/* PROVISIONAL except brand-900. Replace with the JD site palette. */
+/* Editorial Oxblood, Ivory, Ink, Brass & Stone palette */
 :root {
   color-scheme: light;
-  --brand-900: #16303B;
-  --brand-700: #1F4A5A;
-  --brand-500: #2E6F85;
-  --accent-500: #D4A24C;
-  --accent-600: #B98534;
-  --ink-900: #0B1410;
-  --ink-600: #44524B;
-  --paper-50: #F7F5EF;
-  --paper-100: #EFEBE0;
+  --brand-900: #5E1F2B;
+  --brand-700: #782A39;
+  --brand-500: #943B4C;
+  --accent-500: #A9803B;
+  --accent-600: #8E692B;
+  --ink-900: #1B1416;
+  --ink-600: #5C4E52;
+  --paper-50: #F6F1E9;
+  --paper-100: #E4DCCF;
   --danger-600: #B42318;
   --success-600: #1F7A4D;
   --whatsapp-green: #25D366;
@@ -23,7 +23,7 @@
   --card: #fff;
   --card-foreground: var(--ink-900);
   --primary: var(--brand-700);
-  --primary-foreground: #fff;
+  --primary-foreground: #F6F1E9;
   --secondary: var(--paper-100);
   --secondary-foreground: var(--ink-900);
   --muted: var(--paper-100);
@@ -31,8 +31,8 @@
   --accent: var(--accent-500);
   --accent-foreground: var(--ink-900);
   --destructive: var(--danger-600);
-  --border: #d8d4c9;
-  --input: #d8d4c9;
+  --border: #D5CBB9;
+  --input: #D5CBB9;
   --ring: var(--brand-700);
   --radius: 0.75rem;
   font-family: var(--font-inter), -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
@@ -109,8 +109,8 @@ a { color: inherit; }
   position: absolute;
   inset: 0;
   background:
-    radial-gradient(ellipse at 75% 42%, rgba(46, 111, 133, 0.45), transparent 50%),
-    linear-gradient(115deg, #16303B 0%, #1F4A5A 50%, #16303B 100%);
+    radial-gradient(ellipse at 75% 42%, rgba(169, 128, 59, 0.22), transparent 52%),
+    linear-gradient(120deg, #5E1F2B 0%, #782A39 48%, #45141E 100%);
 }
 .hero-art::after {
   content: '';
@@ -148,7 +148,7 @@ a { color: inherit; }
 }
 .hero-copy > p {
   max-width: 520px;
-  color: #e2e8e6;
+  color: #EDE6DA;
   font-size: 19px;
   line-height: 1.5;
 }
@@ -169,17 +169,17 @@ a { color: inherit; }
   font-size: 15px;
   cursor: pointer;
   transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
-  box-shadow: 0 4px 18px rgba(212, 162, 76, 0.25);
+  box-shadow: 0 4px 18px rgba(169, 128, 59, 0.28);
 }
 .gold-button:hover, .submit-button:hover {
-  background: #deb15f;
+  background: #BD934B;
   transform: translateY(-2px);
-  box-shadow: 0 6px 24px rgba(212, 162, 76, 0.38);
+  box-shadow: 0 6px 24px rgba(169, 128, 59, 0.42);
 }
 .hero-copy > small {
   display: block;
   margin-top: 22px;
-  color: #c9d5d1;
+  color: #D5CBB9;
   font-size: 13px;
 }
 .hero-index {
@@ -247,7 +247,7 @@ a { color: inherit; }
   margin: 20px 0;
   color: white;
 }
-.registration-aside p { color: #d1dcda; max-width: 420px; font-size: 16px; }
+.registration-aside p { color: #E4DCCF; max-width: 420px; font-size: 16px; }
 .trust-note {
   border-top: 1px solid rgba(255, 255, 255, 0.2);
   margin-top: 60px;
@@ -451,9 +451,9 @@ a { color: inherit; }
   border-top: 1px solid rgba(255, 255, 255, 0.1);
 }
 .site-footer > div { display: flex; gap: 24px; flex-wrap: wrap; }
-.site-footer > div a { color: #d6e2de; font-size: 14px; text-decoration: none; }
+.site-footer > div a { color: #E4DCCF; font-size: 14px; text-decoration: none; }
 .site-footer > div a:hover { color: white; text-decoration: underline; }
-.site-footer small { width: 100%; color: #9ab0aa; font-size: 13px; margin-top: 8px; }
+.site-footer small { width: 100%; color: #C7BBA8; font-size: 13px; margin-top: 8px; }
 
 /* Success Screen */
 .success { text-align: center; padding: 40px 10px; }

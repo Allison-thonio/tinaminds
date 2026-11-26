@@ -50,17 +50,17 @@ export async function sendAdminNotification(data: AdminNotificationData): Promis
   <meta charset="utf-8">
   <title>${escapeHtml(subject)}</title>
 </head>
-<body style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background-color: #f7f6f2; color: #1c1c1e; padding: 24px 12px; margin: 0;">
+<body style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background-color: #F6F1E9; color: #1c1c1e; padding: 24px 12px; margin: 0;">
   <div style="max-width: 600px; margin: 0 auto; background: #ffffff; border-radius: 8px; border: 1px solid #e5e5ea; overflow: hidden;">
-    <div style="background-color: #0d2818; padding: 24px; color: #ffffff;">
-      <span style="font-size: 12px; text-transform: uppercase; letter-spacing: 0.1em; color: #d4af37;">Tina Like Minds Registry</span>
+    <div style="background-color: #5E1F2B; padding: 24px; color: #ffffff;">
+      <span style="font-size: 12px; text-transform: uppercase; letter-spacing: 0.1em; color: #A9803B;">Tina Like Minds Registry</span>
       <h1 style="margin: 8px 0 0; font-size: 22px; font-weight: 600; color: #ffffff;">New Member Registration</h1>
     </div>
     <div style="padding: 24px;">
       <table style="width: 100%; border-collapse: collapse; font-size: 14px; line-height: 1.6;">
         <tr>
           <td style="padding: 10px 0; border-bottom: 1px solid #f2f2f7; color: #636366; width: 35%;">Registration Code</td>
-          <td style="padding: 10px 0; border-bottom: 1px solid #f2f2f7; font-weight: 600; color: #0d2818; font-size: 16px;">${escapeHtml(data.code)}</td>
+          <td style="padding: 10px 0; border-bottom: 1px solid #f2f2f7; font-weight: 600; color: #5E1F2B; font-size: 16px;">${escapeHtml(data.code)}</td>
         </tr>
         <tr>
           <td style="padding: 10px 0; border-bottom: 1px solid #f2f2f7; color: #636366;">Full Name</td>
@@ -69,7 +69,7 @@ export async function sendAdminNotification(data: AdminNotificationData): Promis
         <tr>
           <td style="padding: 10px 0; border-bottom: 1px solid #f2f2f7; color: #636366;">Phone Number</td>
           <td style="padding: 10px 0; border-bottom: 1px solid #f2f2f7;">
-            <a href="tel:${escapeHtml(data.phoneE164)}" style="color: #0b6e4f; text-decoration: none; font-weight: 500;">${escapeHtml(data.phoneE164)}</a>
+            <a href="tel:${escapeHtml(data.phoneE164)}" style="color: #5E1F2B; text-decoration: none; font-weight: 500;">${escapeHtml(data.phoneE164)}</a>
           </td>
         </tr>
         <tr>
@@ -91,7 +91,7 @@ export async function sendAdminNotification(data: AdminNotificationData): Promis
       </table>
 
       <div style="margin: 32px 0 16px; text-align: center;">
-        <a href="${escapeHtml(recordUrl)}" style="display: inline-block; background-color: #0d2818; color: #ffffff; text-decoration: none; padding: 12px 28px; border-radius: 6px; font-weight: 600; font-size: 15px;">Open Record in Dashboard &rarr;</a>
+        <a href="${escapeHtml(recordUrl)}" style="display: inline-block; background-color: #5E1F2B; color: #ffffff; text-decoration: none; padding: 12px 28px; border-radius: 6px; font-weight: 600; font-size: 15px;">Open Record in Dashboard &rarr;</a>
       </div>
 
       <p style="margin: 20px 0 0; font-size: 13px; color: #8e8e93; text-align: center;">

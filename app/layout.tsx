@@ -23,7 +23,7 @@ export const metadata: Metadata = {
   openGraph: { title: `Member Registry | ${siteConfig.orgName}`, description },
 }
 
-export const viewport: Viewport = { themeColor: '#16303B', colorScheme: 'light' }
+export const viewport: Viewport = { themeColor: '#5E1F2B', colorScheme: 'light' }
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (

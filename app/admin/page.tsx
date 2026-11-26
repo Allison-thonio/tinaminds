@@ -180,7 +180,7 @@ export default function AdminDashboard() {
               className="admin-export-button"
               href={exportUrl}
               download
-              style={{ display: 'flex', alignItems: 'center', gap: 6, background: '#16303B', color: '#fff', borderColor: '#16303B' }}
+              style={{ display: 'flex', alignItems: 'center', gap: 6, background: '#5E1F2B', color: '#fff', borderColor: '#5E1F2B' }}
             >
               <Download size={15} />
               <span>Export CSV</span>
@@ -192,7 +192,7 @@ export default function AdminDashboard() {
         <div className="admin-metrics">
           <div
             className="admin-metric"
-            style={{ cursor: 'pointer', borderLeft: statusFilter === 'all' ? '4px solid #16303B' : undefined }}
+            style={{ cursor: 'pointer', borderLeft: statusFilter === 'all' ? '4px solid #5E1F2B' : undefined }}
             onClick={() => { setStatusFilter('all'); setPage(1) }}
           >
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
@@ -334,7 +334,7 @@ export default function AdminDashboard() {
                 {loading ? (
                   <tr>
                     <td colSpan={7} className="admin-empty-cell" style={{ padding: 48, textAlign: 'center' }}>
-                      <RefreshCw size={24} className="animate-spin" style={{ margin: '0 auto 8px', color: '#16303B' }} />
+                      <RefreshCw size={24} className="animate-spin" style={{ margin: '0 auto 8px', color: '#5E1F2B' }} />
                       <p>Loading registrations…</p>
                     </td>
                   </tr>
@@ -376,7 +376,7 @@ export default function AdminDashboard() {
                               width: 32,
                               height: 32,
                               borderRadius: '50%',
-                              background: '#16303B',
+                              background: '#5E1F2B',
                               color: '#fff',
                               display: 'flex',
                               alignItems: 'center',
@@ -398,7 +398,7 @@ export default function AdminDashboard() {
                         <a
                           href={`tel:${row.phone}`}
                           onClick={(e) => e.stopPropagation()}
-                          style={{ color: '#0b6e4f', fontWeight: 600, textDecoration: 'none' }}
+                          style={{ color: '#5E1F2B', fontWeight: 600, textDecoration: 'none' }}
                         >
                           {row.phone}
                         </a>
@@ -423,7 +423,7 @@ export default function AdminDashboard() {
                             display: 'inline-flex',
                             alignItems: 'center',
                             gap: 4,
-                            color: '#16303B',
+                            color: '#5E1F2B',
                             fontWeight: 600,
                             fontSize: 13,
                           }}

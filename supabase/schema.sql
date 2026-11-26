@@ -76,12 +76,14 @@ create index if not exists registrations_code_idx
 -- =============================================================================
 
 create or replace function public.set_updated_at()
-returns trigger language plpgsql as $$
+returns trigger language plpgsql set search_path = public as $$
 begin
   new.updated_at = now();
   return new;
 end;
 $$;
+
+revoke all on function public.set_updated_at() from public, anon, authenticated;
 
 drop trigger if exists registrations_set_updated_at on public.registrations;
 create trigger registrations_set_updated_at

@@ -33,10 +33,10 @@ export async function sendMemberConfirmation(data: MemberConfirmationData): Prom
   <meta charset="utf-8">
   <title>${escapeHtml(subject)}</title>
 </head>
-<body style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background-color: #f7f6f2; color: #1c1c1e; padding: 24px 12px; margin: 0;">
+<body style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background-color: #F6F1E9; color: #1c1c1e; padding: 24px 12px; margin: 0;">
   <div style="max-width: 560px; margin: 0 auto; background: #ffffff; border-radius: 8px; border: 1px solid #e5e5ea; overflow: hidden;">
-    <div style="background-color: #0d2818; padding: 24px; color: #ffffff;">
-      <span style="font-size: 12px; text-transform: uppercase; letter-spacing: 0.1em; color: #d4af37;">${escapeHtml(siteConfig.orgName)}</span>
+    <div style="background-color: #5E1F2B; padding: 24px; color: #ffffff;">
+      <span style="font-size: 12px; text-transform: uppercase; letter-spacing: 0.1em; color: #A9803B;">${escapeHtml(siteConfig.orgName)}</span>
       <h1 style="margin: 8px 0 0; font-size: 22px; font-weight: 600; color: #ffffff;">Registration Received</h1>
     </div>
     <div style="padding: 24px;">
@@ -45,8 +45,8 @@ export async function sendMemberConfirmation(data: MemberConfirmationData): Prom
         Thank you for registering. Your unique membership registration code is:
       </p>
 
-      <div style="background: #f7f6f2; border: 1px dashed #d4af37; border-radius: 8px; padding: 18px; text-align: center; margin: 24px 0;">
-        <span style="font-family: monospace, Courier, sans-serif; font-size: 28px; font-weight: 700; letter-spacing: 0.15em; color: #0d2818;">
+      <div style="background: #F6F1E9; border: 1px dashed #A9803B; border-radius: 8px; padding: 18px; text-align: center; margin: 24px 0;">
+        <span style="font-family: monospace, Courier, sans-serif; font-size: 28px; font-weight: 700; letter-spacing: 0.15em; color: #5E1F2B;">
           ${escapeHtml(data.code)}
         </span>
       </div>
@@ -58,7 +58,7 @@ export async function sendMemberConfirmation(data: MemberConfirmationData): Prom
       ${
         whatsappUrl
           ? `<div style="margin: 28px 0; text-align: center;">
-              <a href="${escapeHtml(whatsappUrl)}" style="display: inline-block; background-color: #0b6e4f; color: #ffffff; text-decoration: none; padding: 12px 28px; border-radius: 6px; font-weight: 600; font-size: 15px;">Open the WhatsApp Group &rarr;</a>
+              <a href="${escapeHtml(whatsappUrl)}" style="display: inline-block; background-color: #5E1F2B; color: #ffffff; text-decoration: none; padding: 12px 28px; border-radius: 6px; font-weight: 600; font-size: 15px;">Open the WhatsApp Group &rarr;</a>
             </div>`
           : ''
       }
