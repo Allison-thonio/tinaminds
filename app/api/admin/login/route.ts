@@ -5,6 +5,7 @@ import { checkRateLimit } from '@/lib/ratelimit'
 import {
   verifyAdminPassword,
   createSessionToken,
+  verifyAdminOrigin,
   SESSION_COOKIE_NAME,
   SESSION_DURATION_SECONDS,
 } from '@/lib/auth'
@@ -13,6 +14,10 @@ export const runtime = 'nodejs'
 export const dynamic = 'force-dynamic'
 
 export async function POST(request: Request) {
+  if (!verifyAdminOrigin(request)) {
+    return NextResponse.json({ ok: false, error: { code: 'forbidden', message: 'Invalid Origin' } }, { status: 403 })
+  }
+
   const { missing } = adminEnvironment()
   if (missing.length) {
     console.warn(`[config] Admin sign-in disabled. Missing: ${missing.join(', ')}`)
@@ -64,8 +69,8 @@ export async function POST(request: Request) {
     )
   }
 
-  const password = body.password ?? ''
-  if (!password || !verifyAdminPassword(password)) {
+  const password = typeof body.password === 'string' ? body.password : ''
+  if (!password || password.length > 256 || !verifyAdminPassword(password)) {
     return NextResponse.json(
       {
         ok: false,

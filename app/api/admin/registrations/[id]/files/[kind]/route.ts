@@ -35,5 +35,7 @@ export async function GET(request: Request, context: RouteContext) {
 
   const response = NextResponse.redirect(signedUrl, 302)
   response.headers.set('Cache-Control', 'no-store')
+  response.headers.set('Pragma', 'no-cache')
+  response.headers.set('X-Robots-Tag', 'noindex, nofollow')
   return response
 }
