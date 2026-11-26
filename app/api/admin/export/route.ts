@@ -6,6 +6,7 @@ import { formatPhoneForExport, buildFallbackSearchFilter } from '@/lib/phone'
 
 export const runtime = 'nodejs'
 export const dynamic = 'force-dynamic'
+export const maxDuration = 30
 
 function formatDateLagos(isoDate: string | null): string {
   if (!isoDate) return ''
