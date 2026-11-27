@@ -427,7 +427,7 @@ export default function RegistrationDetail({ params }: { params: Promise<{ id: s
         </div>
 
         {/* Main Grid: Details (Left) + Uploaded Documents (Right) */}
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(360px, 1fr))', gap: 28, alignItems: 'start' }}>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 360px), 1fr))', gap: 24, alignItems: 'start' }}>
           
           {/* LEFT COLUMN: Personal Info & Notes */}
           <div style={{ display: 'flex', flexDirection: 'column', gap: 24 }}>

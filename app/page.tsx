@@ -8,6 +8,7 @@ import { registrationSchema } from '@/lib/schemas'
 import { prepareRegistrationImage } from '@/lib/client-image'
 import { ImageUpload } from '@/components/shared/image-upload'
 import { HeroTypedHeading } from '@/components/hero-typed-heading'
+import { AboutFounder } from '@/components/about-founder'
 
 const steps = ['Personal details', 'Location', 'Documents', 'Review & consent']
 const stepFields = [
@@ -257,9 +258,14 @@ export default function Home() {
           <span className="wordmark-title">Tina Like Minds</span>
           <span className="wordmark-sub">Empowerment Initiative</span>
         </a>
-        <a className="header-link" href="#register">
-          Register
-        </a>
+        <div className="header-nav">
+          <a className="header-nav-link" href="#about">
+            About Dr. Tina
+          </a>
+          <a className="header-link" href="#register">
+            Register
+          </a>
+        </div>
       </header>
 
       {/* Hero Section */}
@@ -334,6 +340,9 @@ export default function Home() {
           ))}
         </div>
       </section>
+
+      {/* About Founder Section */}
+      <AboutFounder />
 
       {/* Registration Section */}
       <section className="registration" id="register">
