@@ -253,13 +253,9 @@ export default function Home() {
     <MotionConfig reducedMotion="user">
     <main>
       <header className="site-header">
-        <a className="wordmark" href="#top" aria-label={siteConfig.orgName}>
-          <img
-            src="/images/navbar-logo.jpg"
-            alt={siteConfig.orgName}
-            className="navbar-logo-img"
-            onError={(e) => { e.currentTarget.style.display = 'none' }}
-          />
+        <a className="wordmark" href="#top">
+          <span className="wordmark-title">Tina Like Minds</span>
+          <span className="wordmark-sub">Empowerment Initiative</span>
         </a>
         <a className="header-link" href="#register">
           Register
@@ -775,13 +771,9 @@ export default function Home() {
 
       {/* Footer */}
       <footer className="site-footer">
-        <a className="wordmark" href="#top" aria-label={siteConfig.orgName}>
-          <img
-            src="/images/navbar-logo.jpg"
-            alt={siteConfig.orgName}
-            className="footer-logo-img"
-            onError={(e) => { e.currentTarget.style.display = 'none' }}
-          />
+        <a className="wordmark" href="#top">
+          <span className="wordmark-title">Tina Like Minds</span>
+          <span className="wordmark-sub">Empowerment Initiative</span>
         </a>
         <div>
           <a href="/privacy">Privacy notice</a>

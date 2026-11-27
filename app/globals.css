@@ -73,23 +73,32 @@ a { color: inherit; }
   color: inherit;
   text-decoration: none;
   display: inline-flex;
-  align-items: center;
+  flex-direction: column;
+  line-height: 1.15;
+  transition: opacity 0.2s ease;
 }
 
-.navbar-logo-img {
-  height: 40px;
-  width: auto;
-  object-fit: contain;
-  border-radius: 4px;
-  display: block;
-  filter: brightness(0) invert(1);
+.wordmark:hover {
+  opacity: 0.9;
 }
 
-.footer-logo-img {
-  height: 36px;
-  width: auto;
-  object-fit: contain;
-  display: block;
+.wordmark-title {
+  font-family: var(--font-fraunces), Georgia, serif;
+  font-size: clamp(15px, 2.4vw, 19px);
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #FFFFFF;
+}
+
+.wordmark-sub {
+  font-family: var(--font-inter), -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: clamp(8px, 1.2vw, 9.5px);
+  font-weight: 600;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: var(--accent-500);
+  margin-top: 2px;
 }
 
 .header-link {
