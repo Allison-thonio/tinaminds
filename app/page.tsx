@@ -253,16 +253,13 @@ export default function Home() {
     <MotionConfig reducedMotion="user">
     <main>
       <header className="site-header">
-        <a className="wordmark" href="#top" style={{ display: 'inline-flex', alignItems: 'center', gap: 10 }}>
+        <a className="wordmark" href="#top" aria-label={siteConfig.orgName}>
           <img
-            src="/images/logo.png"
-            alt={`${siteConfig.orgShortName} logo`}
-            width={34}
-            height={34}
-            style={{ borderRadius: 8, display: 'inline-block', objectFit: 'contain' }}
+            src="/images/navbar-logo.jpg"
+            alt={siteConfig.orgName}
+            className="navbar-logo-img"
             onError={(e) => { e.currentTarget.style.display = 'none' }}
           />
-          <span>{siteConfig.orgShortName}</span>
         </a>
         <a className="header-link" href="#register">
           Register
@@ -279,7 +276,7 @@ export default function Home() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
           >
-            A stronger community starts with trust
+            Empowerment begins with identity
           </motion.span>
           <HeroTypedHeading />
           <motion.p
@@ -287,7 +284,7 @@ export default function Home() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.55, delay: 0.25, ease: [0.22, 1, 0.36, 1] }}
           >
-            Register once so the {siteConfig.orgShortName} admin can confirm who is who in our WhatsApp community. It takes about two minutes.
+            Complete a quick registration so the {siteConfig.orgShortName} team can verify every member of our WhatsApp community. It only takes two minutes.
           </motion.p>
           <motion.div
             initial={{ opacity: 0, y: 12 }}
@@ -303,7 +300,7 @@ export default function Home() {
             animate={{ opacity: 1 }}
             transition={{ duration: 0.6, delay: 0.55 }}
           >
-            Your details are stored securely and seen only by the {siteConfig.orgShortName} admin.
+            Your details are protected with encryption and are only accessible to the {siteConfig.orgShortName} admin team.
           </motion.small>
         </div>
         <span className="hero-index">MEMBER REGISTRY · 01</span>
@@ -322,9 +319,9 @@ export default function Home() {
         </motion.div>
         <div className="steps">
           {[
-            ['01', 'Fill in your details.', 'Name, phone, email and where you live.'],
-            ['02', 'Upload two photos.', "Your voter's card and a clear photograph of yourself."],
-            ['03', 'Get your code.', 'Then head back to the WhatsApp group.'],
+            ['01', 'Share your details', 'Your name, phone number, email, and location — the basics so we know who you are.'],
+            ['02', 'Upload your documents', "A photo of your voter's card and a clear, recent photograph of yourself."],
+            ['03', 'Receive your code', 'You\u0027ll get a unique membership code. Keep it safe and head back to the WhatsApp group.'],
           ].map(([n, title, body], index) => (
             <motion.article
               className="step"
@@ -346,18 +343,18 @@ export default function Home() {
       <section className="registration" id="register">
         <div className="section-wrap registration-grid">
           <aside className="registration-aside">
-            <span className="eyebrow">Your community, connected</span>
+            <span className="eyebrow">Your community, verified</span>
             <h2>
               One community.
               <br />
               Known by name.
             </h2>
             <p>
-              We ask for these details so the admin can recognise genuine members and help keep our WhatsApp community safe.
+              We collect these details so the admin team can distinguish genuine members and maintain the integrity of our WhatsApp community.
             </p>
             <div className="trust-note">
               <span aria-hidden="true">✳</span>
-              <p>Your information is private, encrypted, and only visible to the {siteConfig.orgShortName} admin.</p>
+              <p>Your information is private, encrypted, and accessible only to the {siteConfig.orgShortName} admin team.</p>
             </div>
           </aside>
 
@@ -452,7 +449,7 @@ export default function Home() {
                 <div className="form-heading">
                   <span className="eyebrow dark-eyebrow">Member registration</span>
                   <h2>Your details</h2>
-                  <p>All fields are required to verify community membership.</p>
+                  <p>Every field is required to complete your membership verification.</p>
                 </div>
 
                 <div className="mobile-stepper">
@@ -739,7 +736,7 @@ export default function Home() {
         <span className="eyebrow dark-eyebrow">Your trust matters</span>
         <h2>Why we ask for this</h2>
         <p>
-          Our WhatsApp group is open to many people. Registering helps the admin identify genuine members and keep our community safe. Your voter&apos;s card and photograph are stored privately and never shared publicly. The admin reviews each registration by hand; nothing is verified automatically.
+          Our WhatsApp community welcomes many voices. Registration allows the admin team to identify genuine members, protect the group from impersonation, and build a community rooted in accountability. Your voter&apos;s card and photograph are stored privately and never shared publicly. Every registration is reviewed personally — nothing is automated.
         </p>
         <a href="/privacy" className="text-link">
           Read our privacy notice <span aria-hidden="true">↗</span>
@@ -749,20 +746,20 @@ export default function Home() {
       {/* FAQ */}
       <section className="faq section-wrap">
         <div>
-          <span className="eyebrow dark-eyebrow">A few answers</span>
+          <span className="eyebrow dark-eyebrow">Common questions</span>
           <h2>Frequently asked questions</h2>
         </div>
         <div className="faq-list">
           {[
-            ['Why do I need to register?', 'To help the admin confirm genuine members of the WhatsApp group.'],
-            ['Who can see my details?', `Only the ${siteConfig.orgShortName} admin. Your details are never shown publicly.`],
-            ["Why do you need my voter's card?", 'It helps confirm that you are a real person in the community. We store it privately and never share it.'],
-            ['Which WhatsApp number should I use?', 'Use the number you use in the WhatsApp group, so the admin can match you.'],
+            ['Why do I need to register?', 'Registration lets the admin team verify that every member of the WhatsApp group is a real, accountable person in the community.'],
+            ['Who can see my details?', `Only the ${siteConfig.orgShortName} admin team. Your information is never displayed publicly or shared with third parties.`],
+            ["Why do you need my voter's card?", 'Your PVC helps confirm your identity as a genuine community member. It is stored privately and never shared outside the admin team.'],
+            ['Which WhatsApp number should I use?', 'Please register with the same phone number you use in the WhatsApp group, so the admin can match your registration to your profile.'],
             [
-              'I lost my code. What now?',
+              'I lost my code. What do I do?',
               siteConfig.supportEmail
-                ? `Message the admin at ${siteConfig.supportEmail}. Please do not register again.`
-                : `Message the admin in the WhatsApp group, or contact the ${siteConfig.orgShortName} admin directly. Please do not register again.`,
+                ? `Reach out to the admin at ${siteConfig.supportEmail} for assistance. Please do not create a second registration.`
+                : `Contact the admin directly in the WhatsApp group or through the ${siteConfig.orgShortName} team. Please do not register again.`,
             ],
           ].map(([q, a]) => (
             <details key={q}>
@@ -778,16 +775,13 @@ export default function Home() {
 
       {/* Footer */}
       <footer className="site-footer">
-        <a className="wordmark" href="#top" style={{ display: 'inline-flex', alignItems: 'center', gap: 10 }}>
+        <a className="wordmark" href="#top" aria-label={siteConfig.orgName}>
           <img
-            src="/images/logo.png"
-            alt={`${siteConfig.orgShortName} logo`}
-            width={34}
-            height={34}
-            style={{ borderRadius: 8, display: 'inline-block', objectFit: 'contain' }}
+            src="/images/navbar-logo.jpg"
+            alt={siteConfig.orgName}
+            className="footer-logo-img"
             onError={(e) => { e.currentTarget.style.display = 'none' }}
           />
-          <span>{siteConfig.orgShortName}</span>
         </a>
         <div>
           <a href="/privacy">Privacy notice</a>
