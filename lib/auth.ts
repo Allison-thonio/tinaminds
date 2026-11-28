@@ -61,14 +61,48 @@ export async function isAuthenticatedAdmin(request: Request): Promise<boolean> {
 }
 
 export function verifyAdminOrigin(request: Request): boolean {
-  const siteUrl = process.env.SITE_URL
-  if (!siteUrl) return true // In dev if SITE_URL is not set
-  const origin = request.headers.get('origin')
-  if (!origin) return false
+  const origin = request.headers.get('origin') || request.headers.get('referer')
+  const host = request.headers.get('x-forwarded-host') || request.headers.get('host')
+
+  if (!origin) {
+    return process.env.NODE_ENV !== 'production'
+  }
+
   try {
     const originHost = new URL(origin).host
-    const siteHost = new URL(siteUrl).host
-    return originHost === siteHost
+
+    // 1. Same-origin match with the current incoming request host
+    if (host && (originHost === host || originHost === host.split(':')[0])) {
+      return true
+    }
+
+    // 2. Explicit SITE_URL match if configured
+    const siteUrl = process.env.SITE_URL
+    if (siteUrl) {
+      try {
+        const siteHost = new URL(siteUrl).host
+        if (originHost === siteHost || originHost === siteHost.split(':')[0]) {
+          return true
+        }
+      } catch {
+        // Ignore malformed SITE_URL
+      }
+    }
+
+    // 3. Vercel deployment URL match
+    const vercelUrl = process.env.VERCEL_URL
+    if (vercelUrl && (originHost === vercelUrl || originHost === vercelUrl.split(':')[0])) {
+      return true
+    }
+
+    // 4. Localhost in development
+    if (process.env.NODE_ENV !== 'production') {
+      if (originHost.startsWith('localhost') || originHost.startsWith('127.0.0.1')) {
+        return true
+      }
+    }
+
+    return false
   } catch {
     return false
   }
