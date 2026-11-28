@@ -286,7 +286,7 @@ export default function Home() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.55, delay: 0.25, ease: [0.22, 1, 0.36, 1] }}
           >
-            Complete a quick registration so the {siteConfig.orgShortName} team can verify every member of our WhatsApp community. It only takes two minutes.
+            Register your membership to be officially recognized within the {siteConfig.orgShortName} community—connecting genuine minds, safeguarding our shared network, and unlocking targeted empowerment opportunities.
           </motion.p>
           <motion.div
             initial={{ opacity: 0, y: 12 }}
